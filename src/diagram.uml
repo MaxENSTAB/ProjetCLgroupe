@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-9.0" y="264.0">servPattern.ServeurTCP</node>
+    <node x="148.0" y="76.0">servPattern.ProcessusTransaction</node>
+    <node x="354.0" y="76.0">servPattern.IProtocole</node>
+    <node x="0.0" y="395.0">launchPattern.MainClient</node>
+    <node x="92.07954545454544" y="0.0">servPattern.IContext</node>
+    <node x="0.0" y="76.0">launchPattern.UnContexte</node>
+    <node x="3.5" y="319.0">client.ClientTCP</node>
+    <node x="179.5" y="248.0">launchPattern.MainServeur</node>
+    <node x="397.85984848484844" y="172.0">launchPattern.ProtocolePingPong</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="servPattern.IProtocole" target="servPattern.IContext">
+      <point x="0.0" y="-13.0" />
+      <point x="412.0" y="56.0" />
+      <point x="163.47954545454542" y="56.0" />
+      <point x="20.399999999999977" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocolePingPong" target="servPattern.IContext">
+      <point x="41.25" y="-13.0" />
+      <point x="521.6098484848485" y="152.0" />
+      <point x="505.4295454545454" y="152.0" />
+      <point x="505.4295454545454" y="46.0" />
+      <point x="183.87954545454545" y="46.0" />
+      <point x="40.80000000000001" y="13.0" />
+    </edge>
+    <edge source="servPattern.ProcessusTransaction" target="servPattern.ServeurTCP">
+      <point x="23.25" y="13.0" />
+      <point x="264.25" y="122.0" />
+      <point x="248.25" y="122.0" />
+      <point x="7.25" y="-13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocolePingPong" target="servPattern.IProtocole">
+      <point x="-41.25" y="-13.0" />
+      <point x="439.10984848484844" y="152.0" />
+      <point x="450.66666666666663" y="152.0" />
+      <point x="38.66666666666663" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainServeur" target="launchPattern.ProtocolePingPong">
+      <point x="46.125" y="-13.0" />
+      <point x="287.125" y="223.0" />
+      <point x="480.35984848484844" y="223.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="servPattern.ServeurTCP" target="servPattern.IContext">
+      <point x="-50.75" y="-13.0" />
+      <point x="190.25" y="152.0" />
+      <point x="126.49999999999999" y="152.0" />
+      <point x="126.49999999999999" y="56.0" />
+      <point x="122.67954545454543" y="56.0" />
+      <point x="-20.400000000000006" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainServeur" target="servPattern.ServeurTCP">
+      <point x="15.375" y="-13.0" />
+      <point x="256.375" y="223.0" />
+      <point x="270.0" y="223.0" />
+      <point x="29.0" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainClient" target="client.ClientTCP">
+      <point x="29.0" y="-13.0" />
+      <point x="87.0" y="370.0" />
+      <point x="85.25" y="370.0" />
+      <point x="27.25" y="13.0" />
+    </edge>
+    <edge source="servPattern.ServeurTCP" target="servPattern.ProcessusTransaction">
+      <point x="-7.25" y="-13.0" />
+      <point x="233.75" y="122.0" />
+      <point x="217.75" y="122.0" />
+      <point x="-23.25" y="13.0" />
+    </edge>
+    <edge source="launchPattern.UnContexte" target="servPattern.IContext">
+      <point x="0.0" y="-13.0" />
+      <point x="58.0" y="56.0" />
+      <point x="102.27954545454543" y="56.0" />
+      <point x="-40.80000000000001" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainServeur" target="launchPattern.UnContexte">
+      <point x="-46.125" y="-13.0" />
+      <point x="194.875" y="223.0" />
+      <point x="58.0" y="223.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="servPattern.ServeurTCP" target="servPattern.IProtocole">
+      <point x="50.75" y="-13.0" />
+      <point x="291.75" y="152.0" />
+      <point x="412.0" y="152.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="284.5" y="147.5" />
+  <SelectedNodes>
+    <node>servPattern.ServeurTCP</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

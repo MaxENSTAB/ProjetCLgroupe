@@ -5,18 +5,28 @@ import servPattern.IProtocole;
 
 import java.io.*;
 
-public class ProtocoleConnexionAdmin extends ProtocoleConnexion implements IProtocole {
+public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
 
     private String valeurExpediee;
+    private InputStream sockin;
+    private OutputStream sockout;
 
-    public ProtocoleConnexionAdmin() {
+    public ProtocoleConnexionAdmin(IContext c , InputStream unInput , OutputStream unOutput) {
 
-        valeurExpediee = "success";
-        System.out.println(" Reponse serveur "	+ valeurExpediee);
+        valeurExpediee = "Admin success";
+        System.out.println(" Reponse serveur success ? "	+ valeurExpediee);
+
+        sockin = unInput;
+        sockout = unOutput;
     }
 
-
+    public void execute(IContext c , InputStream sockin , OutputStream sockout ) {
+        PrintStream os = new PrintStream(sockout);
+        os.println("Bienvenue dans le Chat !");
+    }
 
 
     public String getValeurExpediee(){return valeurExpediee;}
 }
+
+//TODO : Ici on dit juste qu'on rentre dans le chat, en tant qu'admin.  c'est sûrement ici qu'on implémentera des trucs utiles aux admins.

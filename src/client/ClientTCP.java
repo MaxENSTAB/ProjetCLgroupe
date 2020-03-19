@@ -24,6 +24,8 @@ public class ClientTCP {
 	public boolean connecterAuServeur() {        
 		boolean ok = false;
 		try {
+			String login = new String();
+			String pwd = new String();
 			System.out.println("Tentative : " + nomServeur + " -- " + numeroPort);
 			socketServeur = new Socket( nomServeur, numeroPort);
 			socOut = new PrintStream(socketServeur.getOutputStream());
@@ -58,7 +60,7 @@ public class ClientTCP {
 	public String transmettreChaine(String uneChaine) {        
 		String msgServeur = null;
 		try {
-			System.out.println( "Requete client : " + uneChaine );
+			System.out.println( "Requete client : " + uneChaine);
 			socOut.println( uneChaine );
 			socOut.flush();
 			msgServeur = socIn.readLine();

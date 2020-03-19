@@ -13,19 +13,19 @@ public class ProtocolePingPong implements IProtocole {
 
 	public void execute( IContext c , InputStream unInput , OutputStream unOutput ) {
 		
-		String inputReq;
+		String logins;
 		BufferedReader is = new BufferedReader(new InputStreamReader(
 				unInput));
 		PrintStream os = new PrintStream(unOutput);
 		try {
 			String valeurExpediee = "";
 
-			if ((inputReq = is.readLine()) != null) {
-				System.out.println(" Ordre Recu " + inputReq);
-				String chaines[] = inputReq.split(" ");
+			if ((logins = is.readLine()) != null) {
+				System.out.println(" Login Recu " + logins);
+				String chaines[] = logins.split(" ");
 
-				if (chaines[0].contentEquals("PING")) {
-					valeurExpediee = "PONG";
+				if (chaines[0].contentEquals("admin")) {
+					valeurExpediee = "success";
 					System.out.println(" Reponse serveur "	+ valeurExpediee);
 				}
 				os.println(valeurExpediee);

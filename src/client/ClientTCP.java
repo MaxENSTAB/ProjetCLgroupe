@@ -24,6 +24,8 @@ public class ClientTCP {
 	public boolean connecterAuServeur() {        
 		boolean ok = false;
 		try {
+			String login = new String();
+			String pwd = new String();
 			System.out.println("Tentative : " + nomServeur + " -- " + numeroPort);
 			socketServeur = new Socket( nomServeur, numeroPort);
 			socOut = new PrintStream(socketServeur.getOutputStream());

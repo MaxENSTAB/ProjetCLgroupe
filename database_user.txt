@@ -1,0 +1,5 @@
+login pwd status
+pauline.beaujard pops user
+matthieu.roche roche admin
+maxime.barret grostas user
+adrien.deoux debile admin

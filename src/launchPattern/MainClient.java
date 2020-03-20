@@ -13,13 +13,15 @@ import javax.swing.WindowConstants;
 
 
 public class MainClient {
-
+	
 	public static void main(String[] args) throws IOException {
 
 		String chat = "ok";
 		ClientTCP myClt = new ClientTCP("localhost", 6666 );
+
 		ChatroomGUI MonGUI = new ChatroomGUI();  
 		MonGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		System.out.println("je genere une chatroom");
 		
 		if ( myClt.connecterAuServeur() ) {
 
@@ -38,9 +40,10 @@ public class MainClient {
 				}
 
 				myClt.transmettreChaine(message);
+				
 				//TODO : c'est ici que le client envoie son message au serveur, et ça sera au serveur de redistribuer
 
-
+				MonGUI.setTestField(message);
 
 
 			/*for(int i = 0; i<ListClients.size(); i++) {

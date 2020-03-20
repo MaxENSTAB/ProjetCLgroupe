@@ -2,6 +2,8 @@ package GUI;
 
 //## class MontantBanqueGUI 
 import javax.swing.JFrame;
+
+
 //## class MontantBanqueGUI 
 import java.util.Observer;
 //## operation update(Observable,Object) 
@@ -9,11 +11,13 @@ import java.util.Observable;
 //## link testField 
 import javax.swing.JTextField;
 
+
+
 //import sun.awt.geom.AreaOp.AddOp;
 
 
 //## class MontantBanqueGUI 
-public class ChatroomGUI extends JFrame {
+public class ChatroomGUI extends JFrame implements Observer {
     
     private JTextField testField;		//## link testField 
     
@@ -48,6 +52,8 @@ public class ChatroomGUI extends JFrame {
         testField.setFont(new java.awt.Font("Antique Olive",1,20));
     	testField.setText(s);
     }
+    
+
     
     
 }

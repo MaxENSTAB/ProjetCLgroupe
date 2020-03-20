@@ -60,7 +60,7 @@ public class ClientTCP {
 	public String transmettreChaine(String uneChaine) {        
 		String msgServeur = null;
 		try {
-			System.out.println( "Requete client : " + uneChaine );
+			System.out.println( "Requete client : " + uneChaine);
 			socOut.println( uneChaine );
 			socOut.flush();
 			msgServeur = socIn.readLine();

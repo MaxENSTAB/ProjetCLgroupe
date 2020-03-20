@@ -1,17 +1,27 @@
 package launchPattern;
 
 import servPattern.IContext;
+import GUI.ChatroomGUI;
 import servPattern.IProtocole;
 
 import javax.swing.*;
+
+import client.ClientTCP;
+
 import java.io.*;
+import java.util.ArrayList;
+
 
 public class ProtocoleConnexion implements IProtocole {
+	
+	private ArrayList ListClients = new <ClientTCP>ArrayList();
+
+	
     public ProtocoleConnexion() {
     }
 
-    public void execute(IContext c , InputStream unInput , OutputStream unOutput ) {
-
+    public void execute(IContext c , InputStream unInput , OutputStream unOutput) {
+    	
         String loginspwd;
         BufferedReader is = new BufferedReader(new InputStreamReader(
                 unInput));
@@ -27,7 +37,7 @@ public class ProtocoleConnexion implements IProtocole {
                 String chaines[] = logins.split(" ");
 
                 
-                File database_user = new File ("C:\\Users\\ROCHE\\Documents\\Ensta\\2A\\4.1_CL\\ProjetCL\\database_user.txt");
+                File database_user = new File ("C:\\Users\\Pauline_2\\Downloads\\ProjetCLgroupe-MaxENSTAB-patch-1\\database_user.txt");
             	BufferedReader br = new BufferedReader(new FileReader(database_user));
             	
             	String line = "";
@@ -44,21 +54,37 @@ public class ProtocoleConnexion implements IProtocole {
             	br.close();
 
                 if (status.contentEquals("admin")) {
-                    ProtocoleConnexionAdmin Protocole = new ProtocoleConnexionAdmin(c, unInput, unOutput) ;
-                    valeurExpediee = Protocole.getValeurExpediee();
-                    Protocole.execute(c, unInput, unOutput);
+                	ListClients.add(logins);
+                	System.out.println(ListClients);
+                    ProtocoleConnexionAdmin Protocole1 = new ProtocoleConnexionAdmin(c, unInput, unOutput) ;
+                    valeurExpediee = Protocole1.getValeurExpediee();
+                    Protocole1.execute(c, unInput, unOutput);
+
+                    ProtocoleChat Chatroom = new ProtocoleChat(c, unInput, unOutput);
+                    while(status.contentEquals("admin")){
+                    Chatroom.execute(c, unInput, unOutput);}
+                    
+
                 }
-                else if (status.contentEquals("user")){ 
-                    ProtocoleConnexionUser Protocole = new ProtocoleConnexionUser(c, unInput, unOutput);
-                    valeurExpediee = Protocole.getValeurExpediee();
+                if (status.contentEquals("user")){
+                	ListClients.add(logins);
+                	System.out.println(ListClients);
+                    ProtocoleConnexionUser Protocole2 = new ProtocoleConnexionUser(c, unInput, unOutput);
+                    valeurExpediee = Protocole2.getValeurExpediee();
+                    Protocole2.execute(c, unInput, unOutput);
+
+                    ProtocoleChat Chatroom = new ProtocoleChat(c, unInput, unOutput);       //On rentre dans la chatroomm
+                    while(status.contentEquals("user")){
+                    Chatroom.execute(c, unInput, unOutput);}
+//TODO pour l'instant les admins et les users ont les memes droits, c'est plus tard qu'on implémentera les pouvoirs de l'admin
                 }
 
                 else { // la connexion s'arrete
                     valeurExpediee = "failure";
                     System.out.println(" Reponse serveur "	+ valeurExpediee);
-
+                    
                 }
-                os.println(valeurExpediee);
+                //os.println(valeurExpediee);
                 
                 
             

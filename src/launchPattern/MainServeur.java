@@ -2,15 +2,16 @@ package launchPattern;
 
 import javax.swing.WindowConstants;
 
-
+import GUI.ChatroomGUI;
 import servPattern.ServeurTCP;
 
 public class MainServeur {
-
+	
+	
 	public static void main(String[] args) {
-		ServeurTCP myServ = new ServeurTCP(new UnContexte() , new ProtocoleConnexion() , 6666 );
+		UnContexte contexte = new UnContexte();
+		ServeurTCP myServ = new ServeurTCP(contexte , new ProtocoleConnexion() , 6666 );
 		myServ.start();
-		
 	}
 }
 

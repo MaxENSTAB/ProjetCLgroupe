@@ -30,12 +30,12 @@ public class ChatroomGUI extends JFrame implements Observer {
         this.add(testField);  
 
         
-        
-        
+       
+
         testField.setBackground(new java.awt.Color(255,128,0));
         testField.setPreferredSize(new java.awt.Dimension(250, 108));
         testField.setFont(new java.awt.Font("Antique Olive",1,28));
-
+        
         
         testField.setText( "Message des users" );
         

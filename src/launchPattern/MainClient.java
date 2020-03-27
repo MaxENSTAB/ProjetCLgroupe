@@ -33,13 +33,22 @@ public class MainClient {
 
 			while(chat=="ok") {
 
-				String message;
-				message = reader.readLine();
-				if (message == "quitter") {
-					myClt.deconnecterDuServeur();
-				}
-
-				myClt.transmettreChaine(message);
+				String message = null;
+				
+				//TODO : créer une classe attente message avec ca (thread):
+				
+				while ((message = reader.readLine()) != null) {
+					if (message == "quitter") {
+						myClt.deconnecterDuServeur();
+					}
+					myClt.transmettreChaine(message);
+					message = null;
+					};
+					
+				// TODO : client doit écrire ce qu'il y a dans l'os en permanence
+				System.out.println("frite");
+				
+				
 				
 				//TODO : c'est ici que le client envoie son message au serveur, et Ã§a sera au serveur de redistribuer
 

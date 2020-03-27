@@ -1,6 +1,9 @@
 package launchPattern;
 
 import servPattern.IContext;
+import java.util.Set;
+import java.util.Iterator;
+
 import GUI.ChatroomGUI;
 import servPattern.IProtocole;
 import java.util.Observable;
@@ -9,28 +12,40 @@ import javax.swing.WindowConstants;
 
 import java.io.*;
 
-public class ProtocoleChat extends Observable implements IProtocole {
-    private InputStream msgIn;
-    private OutputStream msgOut;
-    private ChatroomGUI chatroom;
+public class ProtocoleChat extends Observable {
 
 
-    public ProtocoleChat(IContext c ,InputStream msgIn, OutputStream msgOut ) {
-        this.msgOut = msgOut;
-        //this.chatroom = chat;
+
+
+    public ProtocoleChat(IContext c, String login) {
 
     }
-    public void execute(IContext c ,InputStream msgIn, OutputStream msgOut ) throws IOException {
-
+    public void execute(IContext c, String login) throws IOException {
+    	UnContexte contexte = (UnContexte) c;
+    	
+    	
         String message;
         BufferedReader reader = new BufferedReader(new InputStreamReader(
-                msgIn));
-        PrintStream os = new PrintStream(msgOut);
-
+                contexte.getInput(login)));
         message = reader.readLine();
         System.out.println(message);
-        os.println(message);
-        // chatroom.setTestField(message);
+        
+        Set keys = contexte.getDicOutput().keySet();
+        Iterator i = keys.iterator();
+        String key = "";
+        PrintStream os;
+        while (i.hasNext()) {
+        	key = (String) i.next();
+        	System.out.println(key);
+        	
+        	os = new PrintStream(contexte.getOutput(key));
+        	System.out.println(os);
+            os.println(message);
+            //MonGUI.setTestField(message);
+        }
+        
+  
+
 
 
 

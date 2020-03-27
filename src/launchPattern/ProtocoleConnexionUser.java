@@ -1,6 +1,7 @@
 package launchPattern;
 
 import servPattern.IContext;
+import GUI.ChatroomGUI;
 import servPattern.IProtocole;
 
 import java.io.*;

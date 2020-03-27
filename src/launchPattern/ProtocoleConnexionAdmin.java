@@ -1,9 +1,12 @@
 package launchPattern;
 
 import servPattern.IContext;
+
 import servPattern.IProtocole;
 
 import java.io.*;
+
+import GUI.ChatroomGUI;
 
 public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
 
@@ -20,7 +23,7 @@ public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
         sockout = unOutput;
     }
 
-    public void execute(IContext c , InputStream sockin , OutputStream sockout ) {
+    public void execute(IContext c , InputStream sockin , OutputStream sockout) {
         PrintStream os = new PrintStream(sockout);
         os.println("Bienvenue dans le Chat !");
     }

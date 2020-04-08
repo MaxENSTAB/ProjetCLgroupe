@@ -10,10 +10,16 @@ import servPattern.IContext;
 
 
 
+/**
+ * @author Pauline Beaujard
+ *
+ */
 public class UnContexte implements IContext {
-	private Hashtable DicProtocole = new Hashtable();
-	private Hashtable DicInput = new Hashtable();
-	private Hashtable DicOutput = new Hashtable();
+	private Hashtable<String, ProtocoleConnexion> DicProtocole = new Hashtable<String, ProtocoleConnexion>();
+	private Hashtable<String, InputStream> DicInput = new Hashtable<String, InputStream>();
+	private Hashtable<String, OutputStream> DicOutput = new Hashtable<String, OutputStream>();
+	private ArrayList<String> ListMessages = new ArrayList<String>();
+	
 
 
 	public UnContexte() {
@@ -23,6 +29,19 @@ public class UnContexte implements IContext {
 		DicProtocole.put(login, protocole);
 		DicInput.put(login, unInput);
 		DicOutput.put(login, unOutput);
+	}
+	
+	public void addMessages(String message) {
+		ListMessages.add(message);
+	}
+	public void remove(String login) {
+		DicProtocole.remove(login);
+		DicInput.remove(login);
+		DicOutput.remove(login);
+	}
+	
+	public void clearList() {
+		ListMessages.clear();
 	}
 
 	public Hashtable getDicProtocole() {
@@ -47,6 +66,10 @@ public class UnContexte implements IContext {
 	
 	public OutputStream getOutput(String login) {
 		return (OutputStream) DicOutput.get(login);
+	}
+
+	public ArrayList getListMessages() {
+		return ListMessages;
 	}
 	
 	

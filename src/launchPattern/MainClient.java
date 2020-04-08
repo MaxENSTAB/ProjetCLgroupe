@@ -1,12 +1,13 @@
 package launchPattern;
 
 import client.ClientTCP;
+
 import GUI.ChatroomGUI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+
 
 import javax.swing.WindowConstants;
 
@@ -14,63 +15,62 @@ import javax.swing.WindowConstants;
 
 public class MainClient {
 	
+
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException {
 
 		String chat = "ok";
 		ClientTCP myClt = new ClientTCP("localhost", 6666 );
-
-		ChatroomGUI MonGUI = new ChatroomGUI();  
-		MonGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		System.out.println("je genere une chatroom");
-		
+				
 		if ( myClt.connecterAuServeur() ) {
-
+			
 			System.out.println("Rentre ton 'login pwd' \n");
 			BufferedReader reader =
 					new BufferedReader(new InputStreamReader(System.in));
-			String login = reader.readLine();
-			myClt.transmettreChaine(login);  //Pouloulou
+			String logins = reader.readLine();
+			myClt.transmettreChaine(logins);  
+			String login = logins.split(" ")[0];
+			myClt.recupchaine();
+			
+			// une fois connecté : 
+			ChatroomGUI MonGUI = new ChatroomGUI();  
+			MonGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			LireMessage liremessage = new LireMessage(myClt, MonGUI);
 
+	
+			
 			while(chat=="ok") {
-
-				String message = null;
 				
-				//TODO : créer une classe attente message avec ca (thread):
+				System.out.println("Tu es maintenant sur le chat. Ecris ce que tu veux. \n");
+				String message = "init";
+				String quitter = "quitter";
+				 
+			
+				liremessage.start();
+			
 				
-				while ((message = reader.readLine()) != null) {
-					if (message == "quitter") {
-						myClt.deconnecterDuServeur();
+				
+				while (message  != null) {
+					
+					message = reader.readLine();
+					if (message.contentEquals(quitter)) {
+						liremessage.stop();
+						myClt.deconnecterDuServeur(login); //TODO : revoir la fonction parce que pas vraiment deconnecté
+						
+						chat = "break";
+						
+				
 					}
 					myClt.transmettreChaine(message);
-					message = null;
-					};
 					
-				// TODO : client doit écrire ce qu'il y a dans l'os en permanence
-				System.out.println("frite");
-				
-				
-				
-				//TODO : c'est ici que le client envoie son message au serveur, et Ã§a sera au serveur de redistribuer
-
-				MonGUI.setTestField(message);
-
-
-			/*for(int i = 0; i<ListClients.size(); i++) {
-				ClientTCP client = ListClients.get(i);
-				client.transmettreChaine(message);
-			}*/				//TODO : dans cette boucle for, j'ai essayÃ© de parcourir tous les clients du serveur, ce que je trouve bizarre, cf todo du dessus
-							//TODO : Il faudrait plutot essayer de le faire Ã  un endroit oÃ¹ on a accÃ¨s au nombre de personnes connectÃ©es.
-
+					};
 			}
 
-			//System.out.println("Saisir texte \n");
-			//String texte = reader.readLine();
-			//myClt.transmettreChaine(texte);
+
 		}
 
 		
 
-		myClt.deconnecterDuServeur();
 		
 
 	

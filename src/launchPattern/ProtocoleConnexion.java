@@ -68,12 +68,16 @@ public class ProtocoleConnexion implements IProtocole {
                     ProtocoleConnexionAdmin Protocole1 = new ProtocoleConnexionAdmin(c, unInput, unOutput) ;
                     valeurExpediee = Protocole1.getValeurExpediee();
                     Protocole1.execute(c, unInput, unOutput);
-                    
-                    
-                    
+ 
+                    //pas a faire en fait
+                    //TODO : faire protocole(thread?) lire chat (il tourne en boucle)
+                    //TODO : comment acceder aux messages de tout le monde dans le thread ? 
+                    //TODO : faire protocole envoye chat = Protocolechat
+                    //TODO : en gros separer les 2 et que un tourne en boucle et pas l'autre
+                  
                     ProtocoleChat Chatroom = new ProtocoleChat(c, logins);
                     while(status.contentEquals("admin")){
-                    Chatroom.execute(c, logins);}
+                    Chatroom.execute(c, logins);} 
                     
 
                 }

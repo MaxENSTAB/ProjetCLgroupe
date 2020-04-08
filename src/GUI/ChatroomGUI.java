@@ -1,11 +1,13 @@
 package GUI;
 
+import javax.swing.JButton;
 //## class MontantBanqueGUI 
 import javax.swing.JFrame;
-
+import javax.swing.JTextArea;
 
 //## class MontantBanqueGUI 
 import java.util.Observer;
+import java.awt.Color;
 //## operation update(Observable,Object) 
 import java.util.Observable;
 //## link testField 
@@ -19,39 +21,51 @@ import javax.swing.JTextField;
 //## class MontantBanqueGUI 
 public class ChatroomGUI extends JFrame implements Observer {
     
-    private JTextField testField;		//## link testField 
-    
+    private JTextArea txtOutput;
+    private JButton btnSend;
     
     public  ChatroomGUI() {
         super();
         
         this.setTitle("CHATROOM");
-        testField = new javax.swing.JTextField();
-        this.add(testField);  
-
+        txtOutput = new JTextArea();
         
-       
-
-        testField.setBackground(new java.awt.Color(255,128,0));
-        testField.setPreferredSize(new java.awt.Dimension(250, 108));
-        testField.setFont(new java.awt.Font("Antique Olive",1,28));
-        
-        
-        testField.setText( "Message des users" );
-        
-        
-        this.pack();
+        this.add(txtOutput);  
+        this.txtOutput.setBackground(new Color(220,220,220));
+        this.txtOutput.setEditable(false);
+        this.setSize(1000,400);
         this.setVisible(true);
-        testField.setEditable(false);
+        
+      
+        //testField.setBackground(new java.awt.Color(255,128,0));
+        //testField.setPreferredSize(new java.awt.Dimension(250, 108));
+        //testField.setFont(new java.awt.Font("Antique Olive",1,28));
+        
+        
+        this.txtOutput.setText( "Bienvenue sur le chat \n" );
+        
+        this.setAlwaysOnTop(true);
+
+        this.setVisible(true);
+        txtOutput.setEditable(false);
         getContentPane().setBackground(new java.awt.Color(255,128,64));
         getContentPane().setForeground(new java.awt.Color(255,128,0));
         
         //#]
     }
-    public void setTestField(String s) { 
-        testField.setFont(new java.awt.Font("Antique Olive",1,20));
-    	testField.setText(s);
+    //public void setTestField(String s) { 
+      //  testField.setFont(new java.awt.Font("Antique Olive",1,20));
+    	//testField.setText(s);
+    //}
+    public void ajouterMessage(String text){
+    	this.txtOutput.append(text+"\n");
     }
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
     
 
     

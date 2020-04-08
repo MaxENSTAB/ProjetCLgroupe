@@ -46,12 +46,14 @@ public class ClientTCP {
 		return ok;
 	} 	
 	
-	public void deconnecterDuServeur() {        
+	public void deconnecterDuServeur(String login) {        
 		try {
 			System.out.println("[ClientTCP] CLIENT : " + socketServeur);
+			socOut.println(login + " se deconnecte");
 			socOut.close();
 			socIn.close();
 			socketServeur.close();
+			System.exit(0);
 		} catch (Exception e) {
 			System.err.println("Exception lors de la deconnexion :  " + e);
 		}
@@ -59,13 +61,26 @@ public class ClientTCP {
 	
 	public String transmettreChaine(String uneChaine) {        
 		String msgServeur = null;
-		try {
-			System.out.println( "Requete client : " + uneChaine);
+
 			socOut.println( uneChaine );
 			socOut.flush();
-			msgServeur = socIn.readLine();
-			System.out.println( "Reponse serveur : " + msgServeur );
 
+		return msgServeur;
+	} 
+	
+	public String recupchaine() {        
+		String msgServeur = null;
+		String fin = "fin";
+		try {
+			msgServeur = socIn.readLine();
+			if (!msgServeur.equals(fin)) {
+				if (!msgServeur.equals("quitter")) {
+					System.out.println( msgServeur ); 
+				}
+			
+			}
+
+			
 		} catch (UnknownHostException e) {
 			System.err.println("Serveur inconnu : " + e);
 		} catch (IOException e) {
@@ -75,31 +90,5 @@ public class ClientTCP {
 		return msgServeur;
 	} 
 
-	/* A utiliser pour ne pas deleguer la connexion aux interfaces GUI */
-	public String transmettreChaineConnexionPonctuelle(String uneChaine) {
-		String msgServeur = null;
-		String chaineRetour = "";
-		System.out.println("\nClient connexionTransmettreChaine " + uneChaine);
-		if (connecterAuServeur() == true) {
-			try {
-				socOut.println(uneChaine);
-				socOut.flush();
-				msgServeur = socIn.readLine();
-				while( msgServeur != null && msgServeur.length() >0) {
-					chaineRetour += msgServeur + "\n";
-					msgServeur = socIn.readLine();
-				}
-				System.out.println("Client msgServeur " + chaineRetour);
-				deconnecterDuServeur();
-			} catch (Exception e) {
-				System.err.println("Exception lors de la connexion client:  " + e);
-			}
-		}
-		else
-		{	
-			System.err.println("Connexion echouee");
-		}
-		return chaineRetour;
-	}
 	
 }

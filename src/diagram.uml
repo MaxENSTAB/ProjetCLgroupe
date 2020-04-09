@@ -3,99 +3,202 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="-9.0" y="264.0">servPattern.ServeurTCP</node>
-    <node x="148.0" y="76.0">servPattern.ProcessusTransaction</node>
-    <node x="354.0" y="76.0">servPattern.IProtocole</node>
-    <node x="0.0" y="395.0">launchPattern.MainClient</node>
-    <node x="92.07954545454544" y="0.0">servPattern.IContext</node>
-    <node x="0.0" y="76.0">launchPattern.UnContexte</node>
-    <node x="3.5" y="319.0">client.ClientTCP</node>
-    <node x="179.5" y="248.0">launchPattern.MainServeur</node>
-    <node x="397.85984848484844" y="172.0">launchPattern.ProtocolePingPong</node>
+    <node x="467.8333333333333" y="202.0">launchPattern.ProtocoleConnexion</node>
+    <node x="21.5" y="202.0">servPattern.ProcessusTransaction</node>
+    <node x="64.0546875" y="607.0">launchPattern.MainClient</node>
+    <node x="423.0055555555555" y="0.0">servPattern.IContext</node>
+    <node x="525.25" y="298.0">launchPattern.UnContexte</node>
+    <node x="2.0052083333333286" y="445.0">client.ClientTCP</node>
+    <node x="453.25" y="374.0">launchPattern.MainServeur</node>
+    <node x="541.8333333333333" y="96.0">launchPattern.ProtocoleConnexionAdmin</node>
+    <node x="63.85634920634919" y="298.0">servPattern.ServeurTCP</node>
+    <node x="320.8333333333333" y="96.0">launchPattern.ProtocoleConnexionUser</node>
+    <node x="768.8333333333333" y="96.0">launchPattern.ProtocoleChat</node>
+    <node x="184.83333333333331" y="96.0">servPattern.IProtocole</node>
+    <node x="131.00520833333331" y="445.0">GUI.ChatroomGUI</node>
+    <node x="61.6484375" y="521.0">launchPattern.LireMessage</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="servPattern.IProtocole" target="servPattern.IContext">
-      <point x="0.0" y="-13.0" />
-      <point x="412.0" y="56.0" />
-      <point x="163.47954545454542" y="56.0" />
-      <point x="20.399999999999977" y="13.0" />
+    <edge source="launchPattern.MainClient" target="launchPattern.LireMessage">
+      <point x="9.666666666666657" y="-13.0" />
+      <point x="131.72135416666666" y="567.0" />
+      <point x="153.8984375" y="567.0" />
+      <point x="30.75" y="13.0" />
     </edge>
-    <edge source="launchPattern.ProtocolePingPong" target="servPattern.IContext">
-      <point x="41.25" y="-13.0" />
-      <point x="521.6098484848485" y="152.0" />
-      <point x="505.4295454545454" y="152.0" />
-      <point x="505.4295454545454" y="46.0" />
-      <point x="183.87954545454545" y="46.0" />
-      <point x="40.80000000000001" y="13.0" />
+    <edge source="launchPattern.ProtocoleConnexionAdmin" target="servPattern.IContext">
+      <point x="0.0" y="-13.0" />
+      <point x="645.3333333333333" y="66.0" />
+      <point x="493.1305555555555" y="66.0" />
+      <point x="19.125" y="13.0" />
     </edge>
     <edge source="servPattern.ProcessusTransaction" target="servPattern.ServeurTCP">
-      <point x="23.25" y="13.0" />
-      <point x="264.25" y="122.0" />
-      <point x="248.25" y="122.0" />
-      <point x="7.25" y="-13.0" />
+      <point x="69.75" y="13.0" />
+      <point x="184.25" y="258.0" />
+      <point x="143.6063492063492" y="258.0" />
+      <point x="21.75" y="-13.0" />
     </edge>
-    <edge source="launchPattern.ProtocolePingPong" target="servPattern.IProtocole">
-      <point x="-41.25" y="-13.0" />
-      <point x="439.10984848484844" y="152.0" />
-      <point x="450.66666666666663" y="152.0" />
-      <point x="38.66666666666663" y="13.0" />
+    <edge source="launchPattern.MainClient" target="GUI.ChatroomGUI">
+      <point x="48.33333333333334" y="-13.0" />
+      <point x="170.38802083333334" y="587.0" />
+      <point x="219.203125" y="587.0" />
+      <point x="219.203125" y="496.0" />
+      <point x="238.63020833333331" y="496.0" />
+      <point x="46.125" y="13.0" />
     </edge>
-    <edge source="launchPattern.MainServeur" target="launchPattern.ProtocolePingPong">
-      <point x="46.125" y="-13.0" />
-      <point x="287.125" y="223.0" />
-      <point x="480.35984848484844" y="223.0" />
-      <point x="0.0" y="13.0" />
+    <edge source="launchPattern.ProtocoleChat" target="servPattern.IContext">
+      <point x="0.0" y="-13.0" />
+      <point x="837.3333333333333" y="56.0" />
+      <point x="505.8805555555555" y="56.0" />
+      <point x="31.875" y="13.0" />
     </edge>
-    <edge source="servPattern.ServeurTCP" target="servPattern.IContext">
-      <point x="-50.75" y="-13.0" />
-      <point x="190.25" y="152.0" />
-      <point x="126.49999999999999" y="152.0" />
-      <point x="126.49999999999999" y="56.0" />
-      <point x="122.67954545454543" y="56.0" />
-      <point x="-20.400000000000006" y="13.0" />
-    </edge>
-    <edge source="launchPattern.MainServeur" target="servPattern.ServeurTCP">
-      <point x="15.375" y="-13.0" />
-      <point x="256.375" y="223.0" />
-      <point x="270.0" y="223.0" />
-      <point x="29.0" y="13.0" />
-    </edge>
-    <edge source="launchPattern.MainClient" target="client.ClientTCP">
-      <point x="29.0" y="-13.0" />
-      <point x="87.0" y="370.0" />
-      <point x="85.25" y="370.0" />
-      <point x="27.25" y="13.0" />
+    <edge source="launchPattern.ProtocoleConnexion" target="launchPattern.ProtocoleConnexionUser">
+      <point x="-60.19999999999993" y="-13.0" />
+      <point x="493.6333333333334" y="172.0" />
+      <point x="354.1666666666667" y="172.0" />
+      <point x="-66.66666666666663" y="13.0" />
     </edge>
     <edge source="servPattern.ServeurTCP" target="servPattern.ProcessusTransaction">
       <point x="-7.25" y="-13.0" />
-      <point x="233.75" y="122.0" />
-      <point x="217.75" y="122.0" />
+      <point x="114.6063492063492" y="248.0" />
+      <point x="91.25" y="248.0" />
       <point x="-23.25" y="13.0" />
-    </edge>
-    <edge source="launchPattern.UnContexte" target="servPattern.IContext">
-      <point x="0.0" y="-13.0" />
-      <point x="58.0" y="56.0" />
-      <point x="102.27954545454543" y="56.0" />
-      <point x="-40.80000000000001" y="13.0" />
-    </edge>
-    <edge source="launchPattern.MainServeur" target="launchPattern.UnContexte">
-      <point x="-46.125" y="-13.0" />
-      <point x="194.875" y="223.0" />
-      <point x="58.0" y="223.0" />
-      <point x="0.0" y="13.0" />
     </edge>
     <edge source="servPattern.ServeurTCP" target="servPattern.IProtocole">
       <point x="50.75" y="-13.0" />
-      <point x="291.75" y="152.0" />
-      <point x="412.0" y="152.0" />
+      <point x="172.6063492063492" y="278.0" />
+      <point x="229.0" y="278.0" />
+      <point x="229.0" y="182.0" />
+      <point x="242.83333333333331" y="182.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexion" target="servPattern.IProtocole">
+      <point x="-77.39999999999998" y="-13.0" />
+      <point x="476.43333333333334" y="182.0" />
+      <point x="281.5" y="182.0" />
+      <point x="38.666666666666686" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainServeur" target="launchPattern.ProtocoleConnexion">
+      <point x="0.0" y="-13.0" />
+      <point x="514.75" y="278.0" />
+      <point x="485.0333333333333" y="278.0" />
+      <point x="-68.80000000000001" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexionUser" target="launchPattern.ProtocoleConnexion">
+      <point x="66.66666666666674" y="13.0" />
+      <point x="487.50000000000006" y="152.0" />
+      <point x="528.0333333333333" y="152.0" />
+      <point x="-25.799999999999955" y="-13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexion" target="launchPattern.UnContexte">
+      <point x="68.79999999999995" y="13.0" />
+      <point x="622.6333333333332" y="258.0" />
+      <point x="592.9166666666666" y="258.0" />
+      <point x="9.666666666666629" y="-13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleChat" target="launchPattern.UnContexte">
+      <point x="45.66666666666663" y="13.0" />
+      <point x="883.0" y="182.0" />
+      <point x="844.8575396825396" y="182.0" />
+      <point x="844.8575396825396" y="268.0" />
+      <point x="612.25" y="268.0" />
+      <point x="29.0" y="-13.0" />
+    </edge>
+    <edge source="launchPattern.MainServeur" target="servPattern.ServeurTCP">
+      <point x="-49.19999999999999" y="-13.0" />
+      <point x="465.54999999999995" y="354.0" />
+      <point x="92.8563492063492" y="354.0" />
+      <point x="-29.0" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexion" target="launchPattern.ProtocoleConnexionAdmin">
+      <point x="25.799999999999955" y="-13.0" />
+      <point x="579.6333333333332" y="152.0" />
+      <point x="645.3333333333333" y="152.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="launchPattern.UnContexte" target="servPattern.IContext">
+      <point x="48.33333333333337" y="-13.0" />
+      <point x="631.5833333333334" y="278.0" />
+      <point x="916.3333333333333" y="278.0" />
+      <point x="916.3333333333333" y="46.0" />
+      <point x="518.6305555555555" y="46.0" />
+      <point x="44.625" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainServeur" target="launchPattern.UnContexte">
+      <point x="24.600000000000023" y="-13.0" />
+      <point x="539.35" y="354.0" />
+      <point x="554.25" y="354.0" />
+      <point x="-29.0" y="13.0" />
+    </edge>
+    <edge source="servPattern.IProtocole" target="servPattern.IContext">
+      <point x="0.0" y="-13.0" />
+      <point x="242.83333333333331" y="66.0" />
+      <point x="454.8805555555555" y="66.0" />
+      <point x="-19.125" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexionUser" target="servPattern.IContext">
+      <point x="0.0" y="-13.0" />
+      <point x="420.8333333333333" y="76.0" />
+      <point x="467.6305555555555" y="76.0" />
+      <point x="-6.375" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexion" target="servPattern.IContext">
+      <point x="-8.600000000000023" y="-13.0" />
+      <point x="545.2333333333333" y="142.0" />
+      <point x="531.3333333333333" y="142.0" />
+      <point x="531.3333333333333" y="76.0" />
+      <point x="480.3805555555555" y="76.0" />
+      <point x="6.375" y="13.0" />
+    </edge>
+    <edge source="launchPattern.LireMessage" target="GUI.ChatroomGUI">
+      <point x="15.375" y="-13.0" />
+      <point x="138.5234375" y="496.0" />
+      <point x="146.38020833333331" y="496.0" />
+      <point x="-46.125" y="13.0" />
+    </edge>
+    <edge source="launchPattern.MainClient" target="client.ClientTCP">
+      <point x="-48.33333333333333" y="-13.0" />
+      <point x="73.72135416666667" y="587.0" />
+      <point x="26.0" y="587.0" />
+      <point x="26.0" y="496.0" />
+      <point x="15.630208333333329" y="496.0" />
+      <point x="-40.875" y="13.0" />
+    </edge>
+    <edge source="launchPattern.UnContexte" target="launchPattern.ProtocoleConnexion">
+      <point x="-48.33333333333337" y="-13.0" />
+      <point x="534.9166666666666" y="268.0" />
+      <point x="519.4333333333334" y="268.0" />
+      <point x="-34.39999999999998" y="13.0" />
+    </edge>
+    <edge source="launchPattern.LireMessage" target="client.ClientTCP">
+      <point x="-15.375" y="-13.0" />
+      <point x="107.7734375" y="496.0" />
+      <point x="97.38020833333333" y="496.0" />
+      <point x="40.875" y="13.0" />
+    </edge>
+    <edge source="servPattern.ServeurTCP" target="servPattern.IContext">
+      <point x="-36.25" y="-13.0" />
+      <point x="85.6063492063492" y="268.0" />
+      <point x="11.0" y="268.0" />
+      <point x="11.0" y="56.0" />
+      <point x="442.1305555555555" y="56.0" />
+      <point x="-31.875" y="13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexionAdmin" target="launchPattern.ProtocoleConnexion">
+      <point x="69.0" y="13.0" />
+      <point x="714.3333333333333" y="162.0" />
+      <point x="596.8333333333333" y="162.0" />
+      <point x="43.0" y="-13.0" />
+    </edge>
+    <edge source="launchPattern.ProtocoleConnexion" target="launchPattern.ProtocoleChat">
+      <point x="77.39999999999998" y="-13.0" />
+      <point x="631.2333333333333" y="182.0" />
+      <point x="837.3333333333333" y="182.0" />
       <point x="0.0" y="13.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="284.5" y="147.5" />
-  <SelectedNodes>
-    <node>servPattern.ServeurTCP</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="0.8881540609033867" x="426.5" y="279.5" />
+  <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

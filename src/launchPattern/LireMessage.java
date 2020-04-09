@@ -22,10 +22,10 @@ public class LireMessage extends Thread {
 	 
 	public void run() {  
 		while (chat=="ok") {
-		messageserveur = client.recupchaine();
+		messageserveur = client.recupchaine();  // Correspond à la méthode setChanged() du pattern Observable/Observer
 		if (!messageserveur.equals("fin")){
-			if (!messageserveur.equals("quitter")){
-				MonGUI.ajouterMessage(messageserveur);
+			if (!messageserveur.equals("quitter")){  //Si mon message n'est ni "fin", ni "quitter", alors :...
+				MonGUI.ajouterMessage(messageserveur); // Correspond à la méthode notifyObservers() du pattern Observable/Observer
 			}
 		} 
 		

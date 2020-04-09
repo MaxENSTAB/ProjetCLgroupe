@@ -8,7 +8,8 @@ import java.util.Hashtable;
 import client.ClientTCP;
 import servPattern.IContext;
 
-
+//Le contexte contiendra plusieurs dictionnaires, qui feront état des différentes sockets utilisées par les clients pour communiquer
+//Le contexte sera un objet partagé par tous, et c'est là qu'est stockée la liste des messages.
 
 /**
  * @author Pauline Beaujard
@@ -18,8 +19,7 @@ public class UnContexte implements IContext {
 	private Hashtable<String, ProtocoleConnexion> DicProtocole = new Hashtable<String, ProtocoleConnexion>();
 	private Hashtable<String, InputStream> DicInput = new Hashtable<String, InputStream>();
 	private Hashtable<String, OutputStream> DicOutput = new Hashtable<String, OutputStream>();
-	private ArrayList<String> ListMessages = new ArrayList<String>();
-	
+	private ArrayList<String> ListMessages = new ArrayList<String>();		//Liste des messages de tous les clients
 
 
 	public UnContexte() {
@@ -34,6 +34,7 @@ public class UnContexte implements IContext {
 	public void addMessages(String message) {
 		ListMessages.add(message);
 	}
+
 	public void remove(String login) {
 		DicProtocole.remove(login);
 		DicInput.remove(login);

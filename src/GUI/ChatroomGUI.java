@@ -25,7 +25,7 @@ public class ChatroomGUI extends JFrame implements Observer {
     private JButton btnSend;
     
     public  ChatroomGUI() {
-        super();
+        super();            //Utilise le constructeur de la classe mère
         
         this.setTitle("CHATROOM");
         txtOutput = new JTextArea();
@@ -50,14 +50,13 @@ public class ChatroomGUI extends JFrame implements Observer {
    
     }
 
-    public void ajouterMessage(String text){
-    	this.txtOutput.append(text+"\n");
-    }
+    public void ajouterMessage(String text){ //correspond à 'update' du pattern Observable/Observer
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+        this.txtOutput.append(text+"\n");
+
+    }
+	public void update(Observable obs, Object o) {
+		// Auto-generated method stub
 	}
     
 

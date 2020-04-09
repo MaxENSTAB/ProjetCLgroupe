@@ -13,17 +13,22 @@ public class ClientTCP {
 
 	private PrintStream socOut;
 
-	private BufferedReader socIn;	
-	
+	private BufferedReader socIn;
+
+	private String nomClient;
+
+
 	/** Un client se connecte a un serveur identifie par un nom (unNomServeur), sur un port unNumero */
 	public  ClientTCP(String unNomServeur, int unNumero) {        
 		numeroPort = unNumero;
 		nomServeur = unNomServeur;
-	} 
+
+	}
 
 	public boolean connecterAuServeur() {        
 		boolean ok = false;
-		try {
+		try {		//Permet de gérer les exceptions, comme par exemple les cas où les logins sont erronés.
+					//Les cas où il peut y avoir des exceptions sont listés dans les 'catch'
 			String login = new String();
 			String pwd = new String();
 			System.out.println("Tentative : " + nomServeur + " -- " + numeroPort);
@@ -43,31 +48,42 @@ public class ClientTCP {
 			System.err.println("Exception lors de l'echange de donnees:" + e);
 		}
 		System.out.println("Connexion faite");
-		return ok;
+		return ok; //True si la connexion au serveur est faite, False si une exception a été 'attrapée'
 	} 	
 	
-	public void deconnecterDuServeur(String login) {        
+	public void deconnecterDuServeur() {
 		try {
 			System.out.println("[ClientTCP] CLIENT : " + socketServeur);
-			socOut.println(login + " se deconnecte");
+			socOut.println(nomClient + " se deconnecte");
 			socOut.close();
 			socIn.close();
-			socketServeur.close();
+			socketServeur.close();			//On ferme le reader, le printer et la socket liés au client.
 			System.exit(0);
 		} catch (Exception e) {
 			System.err.println("Exception lors de la deconnexion :  " + e);
 		}
 	} 	
 	
-	public String transmettreChaine(String uneChaine) {        
+	public String transmettreChaine(String uneChaine) {
+		//C'est cette méthode qui va permettre d'envoyer un message à tous les clients connectés, via le serveur
 		String msgServeur = null;
 
-			socOut.println( uneChaine );
-			socOut.flush();
+			socOut.println( uneChaine );	// on écrit sur la socket
+			socOut.flush();					// et on 'force' l'envoi
 
 		return msgServeur;
-	} 
-	
+	}
+
+
+	public String getNomClient() {
+		return nomClient;
+	}
+
+	public void setNomClient(String nomClient) {
+		this.nomClient = nomClient;
+	}
+
+
 	public String recupchaine() {        
 		String msgServeur = null;
 		String fin = "fin";
@@ -88,7 +104,7 @@ public class ClientTCP {
 			e.printStackTrace();
 		}
 		return msgServeur;
-	} 
+	}
 
-	
+
 }

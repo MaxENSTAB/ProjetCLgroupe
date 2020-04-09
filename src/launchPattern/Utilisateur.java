@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+//Classe non utilisée dans le projet
+
 public class Utilisateur {
     private String login;
     private String pwd;
@@ -14,7 +16,7 @@ public class Utilisateur {
         this.pwd = pwd;
     }
     public void checkCredentials(Socket soso, BufferedReader credentials) throws IOException {
-        //TODO écrire sur la socket, faire en sorte que le serveur essaie de checker tout ça
+
         credentials = new BufferedReader(
                 new InputStreamReader(soso.getInputStream()));
     }

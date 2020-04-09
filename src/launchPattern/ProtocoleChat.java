@@ -15,9 +15,6 @@ import java.io.*;
 
 public class ProtocoleChat extends Observable {
 
-
-
-
     public ProtocoleChat(IContext c, String login) {
 
     }
@@ -27,7 +24,7 @@ public class ProtocoleChat extends Observable {
         String message; 
         String message_user;
         BufferedReader reader = new BufferedReader(new InputStreamReader(
-                contexte.getInput(login)));
+                contexte.getInput(login)));			//On récupère la socket où on va écouter
         ArrayList list = new ArrayList();
         int size =0;
         
@@ -37,10 +34,10 @@ public class ProtocoleChat extends Observable {
 	        message_user = user + " : " + message;
 	        contexte.addMessages(message_user);
 	        Set keys = contexte.getDicOutput().keySet();
-	        Iterator i = keys.iterator();
+	        Iterator i = keys.iterator();			//on parcours les clients connectés au serveur.
 	        String key = "";
 	        PrintStream os;
-	        list = contexte.getListMessages();
+	        list = contexte.getListMessages();		//On récupère la liste des messages
 
 	        while (i.hasNext()) {
 
@@ -48,16 +45,13 @@ public class ProtocoleChat extends Observable {
 		        if (message.contentEquals(key + " se deconnecte")) {
 		        	contexte.remove(key);
 		        }
-	        	os = new PrintStream(contexte.getOutput(key));
+	        	os = new PrintStream(contexte.getOutput(key));  //A chaque client, on récupère la socket permettant de dialoguer avec lui
 	        	size = list.size();
 	        	for (int j = 0;j<size;j++) {
-	        		os.println(list.get(j));
+	        		os.println(list.get(j));	// On transmet la liste des messages au client
 	        		
 	        	}
 	        	os.println("fin");
-	
-
-	        
 	        }
 	        contexte.clearList();
         }

@@ -24,12 +24,10 @@ public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
     }
 
     public void execute(IContext c , InputStream sockin , OutputStream sockout) {
-        PrintStream os = new PrintStream(sockout);
+        PrintStream os = new PrintStream(sockout);      // On écrit sur la socket pour préciser au client qu'il est bien dans le Chat
         os.println("Bienvenue dans le Chat cher Admin !");
     }
 
 
     public String getValeurExpediee(){return valeurExpediee;}
 }
-
-//TODO : Ici on dit juste qu'on rentre dans le chat, en tant qu'admin.  c'est sûrement ici qu'on implémentera des trucs utiles aux admins.

@@ -9,7 +9,7 @@ public class MainServeur {
 	
 	public static void main(String[] args) {
 		UnContexte contexte = new UnContexte();
-		ServeurTCP myServ = new ServeurTCP(contexte , new ProtocoleConnexion() , 6666 );
+		ServeurTCP myServ = new ServeurTCP(contexte , new ProtocoleConnexion() , 6666 );  //Création de notre serveur
 		myServ.start();
 	}
 }

@@ -20,7 +20,7 @@ public class MainClient {
 	public static void main(String[] args) throws IOException {
 
 		String chat = "ok";
-		ClientTCP myClt = new ClientTCP("localhost", 6666 );
+		ClientTCP myClt = new ClientTCP("localhost", 6666 ); //Création d'un nouveau client...
 				
 		if ( myClt.connecterAuServeur() ) {
 			
@@ -28,12 +28,12 @@ public class MainClient {
 			BufferedReader reader =
 					new BufferedReader(new InputStreamReader(System.in));
 			String logins = reader.readLine();
-			myClt.transmettreChaine(logins);  
+			myClt.transmettreChaine(logins);  //Transmet les logins au serveur pour vérification
 			String login = logins.split(" ")[0];
-			myClt.recupchaine();
-			
-			// une fois connect� : 
-			ChatroomGUI MonGUI = new ChatroomGUI();  
+			myClt.recupchaine(); //Récupère la réponse serveur
+			myClt.setNomClient(login);
+			// une fois connect� : 
+			ChatroomGUI MonGUI = new ChatroomGUI();  	//... et de sa chatroom dans l'IHM
 			MonGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			LireMessage liremessage = new LireMessage(myClt, MonGUI);
 
@@ -46,26 +46,26 @@ public class MainClient {
 				String quitter = "quitter";
 				 
 			
-				liremessage.start();
+				liremessage.start();	// On vérifie constamment si le serveur nous envoie quelque chose
 			
 				
 				
 				while (message  != null) {
 					
 					message = reader.readLine();
-					if (message.contentEquals(quitter)) {
+					if (message.contentEquals(quitter)) {		//Permet de se déconnecter proprement
 						liremessage.stop();
-						myClt.deconnecterDuServeur(login); 
+						myClt.deconnecterDuServeur();
 						
 						chat = "break";
 						
 				
 					}
-					myClt.transmettreChaine(message);
+					myClt.transmettreChaine(message);		//Envoie les messages du client
 					
 					};
 			}
-
+		myClt.deconnecterDuServeur();
 
 		}
 

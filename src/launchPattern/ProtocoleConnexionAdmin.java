@@ -1,9 +1,12 @@
 package launchPattern;
 
 import servPattern.IContext;
+
 import servPattern.IProtocole;
 
 import java.io.*;
+
+import GUI.ChatroomGUI;
 
 public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
 
@@ -20,13 +23,11 @@ public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
         sockout = unOutput;
     }
 
-    public void execute(IContext c , InputStream sockin , OutputStream sockout ) {
-        PrintStream os = new PrintStream(sockout);
-        os.println("Bienvenue dans le Chat !");
+    public void execute(IContext c , InputStream sockin , OutputStream sockout) {
+        PrintStream os = new PrintStream(sockout);      // On écrit sur la socket pour préciser au client qu'il est bien dans le Chat
+        os.println("Bienvenue dans le Chat cher Admin !");
     }
 
 
     public String getValeurExpediee(){return valeurExpediee;}
 }
-
-//TODO : Ici on dit juste qu'on rentre dans le chat, en tant qu'admin.  c'est sûrement ici qu'on implémentera des trucs utiles aux admins.

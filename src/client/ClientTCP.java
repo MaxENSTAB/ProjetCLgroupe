@@ -13,17 +13,22 @@ public class ClientTCP {
 
 	private PrintStream socOut;
 
-	private BufferedReader socIn;	
-	
+	private BufferedReader socIn;
+
+	private String nomClient;
+
+
 	/** Un client se connecte a un serveur identifie par un nom (unNomServeur), sur un port unNumero */
 	public  ClientTCP(String unNomServeur, int unNumero) {        
 		numeroPort = unNumero;
 		nomServeur = unNomServeur;
-	} 
+
+	}
 
 	public boolean connecterAuServeur() {        
 		boolean ok = false;
-		try {
+		try {		//Permet de gérer les exceptions, comme par exemple les cas où les logins sont erronés.
+					//Les cas où il peut y avoir des exceptions sont listés dans les 'catch'
 			String login = new String();
 			String pwd = new String();
 			System.out.println("Tentative : " + nomServeur + " -- " + numeroPort);
@@ -43,29 +48,55 @@ public class ClientTCP {
 			System.err.println("Exception lors de l'echange de donnees:" + e);
 		}
 		System.out.println("Connexion faite");
-		return ok;
+		return ok; //True si la connexion au serveur est faite, False si une exception a été 'attrapée'
 	} 	
 	
-	public void deconnecterDuServeur() {        
+	public void deconnecterDuServeur() {
 		try {
 			System.out.println("[ClientTCP] CLIENT : " + socketServeur);
+			socOut.println(nomClient + " se deconnecte");
 			socOut.close();
 			socIn.close();
-			socketServeur.close();
+			socketServeur.close();			//On ferme le reader, le printer et la socket liés au client.
+			System.exit(0);
 		} catch (Exception e) {
 			System.err.println("Exception lors de la deconnexion :  " + e);
 		}
 	} 	
 	
-	public String transmettreChaine(String uneChaine) {        
+	public String transmettreChaine(String uneChaine) {
+		//C'est cette méthode qui va permettre d'envoyer un message à tous les clients connectés, via le serveur
 		String msgServeur = null;
-		try {
-			System.out.println( "Requete client : " + uneChaine);
-			socOut.println( uneChaine );
-			socOut.flush();
-			msgServeur = socIn.readLine();
-			System.out.println( "Reponse serveur : " + msgServeur );
 
+			socOut.println( uneChaine );	// on écrit sur la socket
+			socOut.flush();					// et on 'force' l'envoi
+
+		return msgServeur;
+	}
+
+
+	public String getNomClient() {
+		return nomClient;
+	}
+
+	public void setNomClient(String nomClient) {
+		this.nomClient = nomClient;
+	}
+
+
+	public String recupchaine() {        
+		String msgServeur = null;
+		String fin = "fin";
+		try {
+			msgServeur = socIn.readLine();
+			if (!msgServeur.equals(fin)) {
+				if (!msgServeur.equals("quitter")) {
+					System.out.println( msgServeur ); 
+				}
+			
+			}
+
+			
 		} catch (UnknownHostException e) {
 			System.err.println("Serveur inconnu : " + e);
 		} catch (IOException e) {
@@ -73,33 +104,7 @@ public class ClientTCP {
 			e.printStackTrace();
 		}
 		return msgServeur;
-	} 
-
-	/* A utiliser pour ne pas deleguer la connexion aux interfaces GUI */
-	public String transmettreChaineConnexionPonctuelle(String uneChaine) {
-		String msgServeur = null;
-		String chaineRetour = "";
-		System.out.println("\nClient connexionTransmettreChaine " + uneChaine);
-		if (connecterAuServeur() == true) {
-			try {
-				socOut.println(uneChaine);
-				socOut.flush();
-				msgServeur = socIn.readLine();
-				while( msgServeur != null && msgServeur.length() >0) {
-					chaineRetour += msgServeur + "\n";
-					msgServeur = socIn.readLine();
-				}
-				System.out.println("Client msgServeur " + chaineRetour);
-				deconnecterDuServeur();
-			} catch (Exception e) {
-				System.err.println("Exception lors de la connexion client:  " + e);
-			}
-		}
-		else
-		{	
-			System.err.println("Connexion echouee");
-		}
-		return chaineRetour;
 	}
-	
+
+
 }

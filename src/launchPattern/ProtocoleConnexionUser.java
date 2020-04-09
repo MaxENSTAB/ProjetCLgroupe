@@ -1,6 +1,7 @@
 package launchPattern;
 
 import servPattern.IContext;
+import GUI.ChatroomGUI;
 import servPattern.IProtocole;
 
 import java.io.*;
@@ -21,12 +22,10 @@ public class ProtocoleConnexionUser extends ProtocoleConnexion {
         }
 
         public void execute(IContext c , InputStream sockin , OutputStream sockout ) {
-            PrintStream os = new PrintStream(sockout);
-            os.println("Bienvenue dans le Chat cher user!");
+            PrintStream os = new PrintStream(sockout);     // On écrit sur la socket pour préciser au client qu'il est bien dans le Chat
+            os.println("Bienvenue dans le Chat cher User!");
         }
         
 
     public String getValeurExpediee(){return valeurExpediee;}
 }
-
-//TODO sombre copy/paste du admin, mais pour l'instant, je crois qu'on s'en fout.

@@ -1,13 +1,16 @@
 package launchPattern;
 
+
+
 import servPattern.ServeurTCP;
 
 public class MainServeur {
-
+	
+	
 	public static void main(String[] args) {
-		ServeurTCP myServ = new ServeurTCP(new UnContexte() , new ProtocoleConnexion() , 6666 );
+		UnContexte contexte = new UnContexte();
+		ServeurTCP myServ = new ServeurTCP(contexte , new ProtocoleConnexion() , 6666 );  //Création de notre serveur
 		myServ.start();
 	}
 }
 
-//TODO : Rien changé ici

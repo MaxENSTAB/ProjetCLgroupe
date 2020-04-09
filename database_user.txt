@@ -1,0 +1,5 @@
+login pwd status
+pauline.beaujard pops user
+matthieu.roche roche admin
+maxime.barret reunion user
+adrien.deoux doudou admin

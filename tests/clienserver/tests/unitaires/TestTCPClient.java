@@ -5,13 +5,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import client.TCPClient;
+import client.ClientTCP;
 
 public class TestTCPClient {
 
 	@Test
 	public void testClient() {
-		TCPClient myClient = new TCPClient("localhost", 6666);
+		ClientTCP myClient = new ClientTCP("localhost", 6666);
 		assertNotNull(myClient);
 	}
 	

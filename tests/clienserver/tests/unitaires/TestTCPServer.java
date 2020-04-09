@@ -9,22 +9,23 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import server.TCPServer;
+import servPattern.ServeurTCP;
 
 public class TestTCPServer {
 	
-	static TCPServer aServer;
+	static ServeurTCP aServer;
 	
 	@BeforeClass
 	public static void beforeClass(){
 		System.out.println("before class");
-		aServer = new TCPServer( 5555 );
+		aServer = new ServeurTCP( 5555 );
 	}
 			
+	@SuppressWarnings("deprecation")
 	@AfterClass
 	public static void afterClass(){
 		System.out.println("after class");
-		aServer.arret();
+		aServer.stop();
 	}
 	
 	@Before
@@ -46,7 +47,7 @@ public class TestTCPServer {
 	
 	@Test
 	public void testAccountIsCreated() {
-		assertNotNull(aServer.getMonCompte());
+		assertNotNull(aServer.getContexte());
 	}
 	
 }

@@ -25,7 +25,7 @@ public class ProtocoleConnexionAdmin extends ProtocoleConnexion {
 
     public void execute(IContext c , InputStream sockin , OutputStream sockout) {
         PrintStream os = new PrintStream(sockout);
-        os.println("Bienvenue dans le Chat !");
+        os.println("Bienvenue dans le Chat cher Admin !");
     }
 
 

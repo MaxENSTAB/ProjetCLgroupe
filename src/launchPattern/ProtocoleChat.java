@@ -34,7 +34,7 @@ public class ProtocoleChat extends Observable {
         while((message = reader.readLine()) != null) {
 
 	        
-	        message_user = user + ":" + message;
+	        message_user = user + " : " + message;
 	        contexte.addMessages(message_user);
 	        Set keys = contexte.getDicOutput().keySet();
 	        Iterator i = keys.iterator();
@@ -53,12 +53,10 @@ public class ProtocoleChat extends Observable {
 	        	for (int j = 0;j<size;j++) {
 	        		os.println(list.get(j));
 	        		
-	        		//TODO : parcourir la liste 
-	        		//TODO: tant qu'on a des messages dans la liste on les envoie et quand yen a plus on met fin de liste.
 	        	}
 	        	os.println("fin");
 	
-	            //MonGUI.setTestField(message);
+
 	        
 	        }
 	        contexte.clearList();
@@ -73,4 +71,4 @@ public class ProtocoleChat extends Observable {
     }
 }
 
-//TODO : ce fichier est tout nouveau, et c'est ici que les messages sont gérés par le serveur.
+

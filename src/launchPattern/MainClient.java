@@ -55,7 +55,7 @@ public class MainClient {
 					message = reader.readLine();
 					if (message.contentEquals(quitter)) {
 						liremessage.stop();
-						myClt.deconnecterDuServeur(login); //TODO : revoir la fonction parce que pas vraiment deconnecté
+						myClt.deconnecterDuServeur(login); 
 						
 						chat = "break";
 						

@@ -40,7 +40,7 @@ public class ProtocoleConnexion implements IProtocole {
             	
                 System.out.println(" Login Recu " + logins);
                 String chaines[] = logins.split(" ");
-                
+                // attention changer le chemin d'acces
                 File database_user = new File ("C:\\Users\\Pauline_2\\OneDrive - Ecole Nationale Supérieure de Techniques Avancées Bretagne\\COURS\\UE 4.2 - Traitement de l'information\\Conception logicielle\\ProjetCLgroupe-encours\\database_user.txt");
             	BufferedReader br = new BufferedReader(new FileReader(database_user));
             	
@@ -68,17 +68,10 @@ public class ProtocoleConnexion implements IProtocole {
                     ProtocoleConnexionAdmin Protocole1 = new ProtocoleConnexionAdmin(c, unInput, unOutput) ;
                     valeurExpediee = Protocole1.getValeurExpediee();
                     Protocole1.execute(c, unInput, unOutput);
- 
-                    //pas a faire en fait
-                    //TODO : faire protocole(thread?) lire chat (il tourne en boucle)
-                    //TODO : comment acceder aux messages de tout le monde dans le thread ? 
-                    //TODO : faire protocole envoye chat = Protocolechat
-                    //TODO : en gros separer les 2 et que un tourne en boucle et pas l'autre
                   
                     ProtocoleChat Chatroom = new ProtocoleChat(c, logins);
                     while(status.contentEquals("admin")){
                     Chatroom.execute(c, logins);} 
-                    
 
                 }
                 if (status.contentEquals("user")){
@@ -95,12 +88,10 @@ public class ProtocoleConnexion implements IProtocole {
 
                 else { // la connexion s'arrete
                     valeurExpediee = "failure";
-                    System.out.println(" Reponse serveur "	+ valeurExpediee);
+                    System.out.println(" Reponse serveur success ?"	+ valeurExpediee);
                     
                 }
-                //os.println(valeurExpediee);
-                
-                
+
             
             }
         } catch ( Exception e) {

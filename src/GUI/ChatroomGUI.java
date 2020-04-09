@@ -36,11 +36,7 @@ public class ChatroomGUI extends JFrame implements Observer {
         this.setSize(1000,400);
         this.setVisible(true);
         
-      
-        //testField.setBackground(new java.awt.Color(255,128,0));
-        //testField.setPreferredSize(new java.awt.Dimension(250, 108));
-        //testField.setFont(new java.awt.Font("Antique Olive",1,28));
-        
+  
         
         this.txtOutput.setText( "Bienvenue sur le chat \n" );
         
@@ -51,12 +47,9 @@ public class ChatroomGUI extends JFrame implements Observer {
         getContentPane().setBackground(new java.awt.Color(255,128,64));
         getContentPane().setForeground(new java.awt.Color(255,128,0));
         
-        //#]
+   
     }
-    //public void setTestField(String s) { 
-      //  testField.setFont(new java.awt.Font("Antique Olive",1,20));
-    	//testField.setText(s);
-    //}
+
     public void ajouterMessage(String text){
     	this.txtOutput.append(text+"\n");
     }
